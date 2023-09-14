@@ -1,0 +1,30 @@
+{
+    "name": "Nelson",
+    "customer": null,
+    "country": "Nigeria",
+    "disabled": 0,
+    "warehouse": "Stores - T",
+    "update_stock": 1,
+    "selling_price_list": "Standard Selling",
+    "currency": "NGN",
+    "write_off_account": "Cost of Goods Sold - T",
+    "write_off_cost_center": "Main - T",
+    "write_off_limit": 1.0,
+    "account_for_change_amount": null,
+    "disable_rounded_total": 0,
+    "income_account": null,
+    "expense_account": null,
+    "taxes_and_charges": null,
+    "tax_category": null,
+    "apply_discount_on": "Grand Total",
+    "cost_center": null,
+    "doctype": "POS Profile",
+    "payments": [
+        {
+            "default": 1,
+            "allow_in_returns": 0,
+            "mode_of_payment": "Cash",
+            "parent": "Nelson"
+        }
+    ]
+}

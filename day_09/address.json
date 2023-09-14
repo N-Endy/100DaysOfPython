@@ -1,0 +1,18 @@
+{
+    "address_title": "Philip Address",
+    "address_type": "Shipping",
+    "address_line1": "101, Yaya Abatan",
+    "city": "Ogba",
+    "state": "Lagos",
+    "country": "Nigeria",
+    "pincode": "105214",
+    "is_primary_address": 0,
+    "is_shipping_address": 1,
+    "links": [
+        {
+            "link_doctype": "Customer",
+            "link_name": "Daniel Philips",
+            "link_title": "Daniel Philips"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "first_name": "Nnamdi",
+    "middle_name": "Nelson",
+    "last_name": "Okafor",
+    "full_name": "Nnamdi Nelson Okafor",
+    "status": "Passive",
+    "salutation": "Mr",
+    "gender": "Male",
+    "phone": "",
+    "mobile_no": "",
+    "company_name": "Endy Villas",
+    "doctype": "Contact",
+    "email_ids": [
+        {
+            "email_id": "nelson@example.com",
+            "is_primary": 0,
+            "parent": "Nnamdi Nelson Okafor"
+        }
+    ],
+    "phone_nos": [
+        {
+            "phone": "08001234456",
+            "is_primary_phone": 0,
+            "is_primary_mobile_no": 0,
+            "parent": "Nnamdi Nelson Okafor"
+        }
+    ]
+}

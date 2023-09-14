@@ -1,0 +1,15 @@
+{
+    "item_code": "TV001",
+    "uom": "Nos",
+    "packing_unit": 1,
+    "item_name": "TV001",
+    "brand": null,
+    "item_description": "TV001",
+    "price_list": "Standard Selling",
+    "customer": "Jerek",
+    "buying": 0,
+    "selling": 1,
+    "currency": "NGN",
+    "price_list_rate": 150000.0,
+    "valid_from": "2023-09-01"
+}
