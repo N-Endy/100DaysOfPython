@@ -27,8 +27,10 @@ def pick_data():
     country = pick["country"]
     return [name, follower_count, description, country]
 
-def compare_celebrity():
-    celeb_a = pick_data()
+def compare_celebrity(celeb=False):
+    celeb_a = celeb
+    if celeb_a == False:
+        celeb_a = pick_data()
     celeb_b = pick_data()
     while celeb_b[0] == celeb_a[0]:
         celeb_b = pick_data()
@@ -43,16 +45,19 @@ def compare_celebrity():
 
     check_compare(celeb_a, celeb_b, answer)
 
+
 def check_compare(data1, data2, input):
     score = 0
     if input == "a" and data1[1] > data2[1]:
         score +=1
         print(f"You are right! Current Score: {score}")
+        compare_celebrity(data1)
     elif input == "a" and data1[1] < data2[1]:
         print(f"Sorry, that's wrong. Final Score: {score}")
     elif input == "b" and data2[1] > data1[1]:
         score +=1
         print(f"You are right! Current Score: {score}")
+        compare_celebrity(data2)
     else:
         print(f"Sorry, that's wrong. Final Score: {score}")
 
