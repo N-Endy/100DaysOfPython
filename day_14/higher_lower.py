@@ -21,25 +21,20 @@ VS = art.vs
 score = 0
 
 def pick_data():
-    pick = random.choice(DATA)
-    name = pick["name"]
-    follower_count = pick["follower_count"]
-    description = pick["description"]
-    country = pick["country"]
-    return [name, follower_count, description, country]
+    return random.choice(DATA)
 
 def compare_celebrity(celeb=False):
     celeb_a = celeb
     if celeb_a == False:
         celeb_a = pick_data()
     celeb_b = pick_data()
-    while celeb_b[0] == celeb_a[0]:
+    while celeb_b['name'] == celeb_a['name']:
         celeb_b = pick_data()
 
 
-    print(f"Compare A: {celeb_a[0]}, a {celeb_a[2]}, from {celeb_a[3]}")
+    print(f"Compare A: {celeb_a['name']}, a {celeb_a['description']}, from {celeb_a['country']}")
     print(VS)
-    print(f"Compare B: {celeb_b[0]}, a {celeb_b[2]}, from {celeb_b[3]}")
+    print(f"Compare B: {celeb_b['name']}, a {celeb_b['description']}, from {celeb_b['country']}")
     answer = input("Who has more followers? Type 'A' or 'B': ").lower()
     while answer != "a" and answer != "b":
         answer = input("Who has more followers? Type 'A' or 'B': ").lower()
@@ -49,13 +44,11 @@ def compare_celebrity(celeb=False):
 
 def check_compare(data1, data2, input):
     global score
-    if input == "a" and data1[1] > data2[1]:
+    if (input == "a" and data1['follower_count'] > data2['follower_count']):
         score +=1
         print(f"You are right! Current Score: {score}")
         compare_celebrity(data1)
-    elif input == "a" and data1[1] < data2[1]:
-        print(f"Sorry, that's wrong. Final Score: {score}")
-    elif input == "b" and data2[1] > data1[1]:
+    elif input == "b" and data2['follower_count'] > data1['follower_count']:
         score +=1
         print(f"You are right! Current Score: {score}")
         compare_celebrity(data2)
