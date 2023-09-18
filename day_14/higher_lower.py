@@ -9,3 +9,20 @@
     # new data loaded for B
     # prompt choice again
 
+import random
+import game_data
+
+
+
+DATA = game_data.data
+
+def pick_data():
+    pick = random.choice(DATA)
+    name = pick["name"]
+    follower_count = pick["follower_count"]
+    description = pick["description"]
+    country = pick["country"]
+    print([name, follower_count, description, country])
+    return [name, follower_count, description, country]
+
+pick_data()
