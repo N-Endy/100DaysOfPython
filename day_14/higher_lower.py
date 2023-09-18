@@ -18,6 +18,7 @@ import  art
 DATA = game_data.data
 LOGO = art.logo
 VS = art.vs
+score = 0
 
 def pick_data():
     pick = random.choice(DATA)
@@ -37,7 +38,7 @@ def compare_celebrity(celeb=False):
 
 
     print(f"Compare A: {celeb_a[0]}, a {celeb_a[2]}, from {celeb_a[3]}")
-    print({VS})
+    print(VS)
     print(f"Compare B: {celeb_b[0]}, a {celeb_b[2]}, from {celeb_b[3]}")
     answer = input("Who has more followers? Type 'A' or 'B': ").lower()
     while answer != "a" and answer != "b":
@@ -47,7 +48,7 @@ def compare_celebrity(celeb=False):
 
 
 def check_compare(data1, data2, input):
-    score = 0
+    global score
     if input == "a" and data1[1] > data2[1]:
         score +=1
         print(f"You are right! Current Score: {score}")
