@@ -67,19 +67,16 @@ def report_storage():
 
 def calculate_money():
     """Calculate and returns total of amount paid"""
-    quarter = 0.25
-    dime = 0.10
-    nickle = 0.05
-    penny = 0.01
-    quarters = int(input("How many quarters?: ")) * quarter
-    dimes = int(input("How many dimes?: ")) * dime
-    nickles = int(input("How many nickles?: ")) * nickle
-    pennies = int(input("How many pennies?: ")) * penny
+    quarters = int(input("How many quarters?: ")) * 0.25
+    dimes = int(input("How many dimes?: ")) * 0.10
+    nickles = int(input("How many nickles?: ")) * 0.05
+    pennies = int(input("How many pennies?: ")) * 0.01
 
     return quarters + dimes + nickles + pennies
 
 
 def pay_for_order(order):
+    """Processes the order after payment"""
     money_paid = calculate_money()
 
     if money_paid < MENU[order]["cost"]:
@@ -97,6 +94,7 @@ def pay_for_order(order):
 
 
 def serve_order(coffe_order, amount):
+    """Takes order and amount as input and serves order"""
     profit += amount
     change = amount - MENU[coffe_order]["cost"]
     print(f"Here is ${round(change, 2)} in change")
@@ -104,6 +102,7 @@ def serve_order(coffe_order, amount):
 
 
 def update_resources(coffe_order):
+    """Updates the quantities in resources after order"""
     resources["water"] -= MENU[coffe_order]["ingredients"]["water"]
     resources["milk"] -= MENU[coffe_order]["ingredients"]["milk"]
     resources["coffee"] -= MENU[coffe_order]["ingredients"]["coffee"]
