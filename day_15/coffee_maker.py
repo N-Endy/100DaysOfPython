@@ -41,7 +41,7 @@ resources = {
 
 def welcome_order():
     """Request input for an order or action"""
-    user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    user_input = input(" What would you like? (espresso/latte/cappuccino): ").lower()
     if user_input == "report":
         report_storage()
         welcome_order()
@@ -86,6 +86,18 @@ def pay_for_order(order):
         if value < MENU[order]["ingredients"][key]:
             print(f"Sorry, there isn't enough {key}")
             welcome_order()
+
+    if order == "latte":
+        change = money_paid - MENU[order]["cost"]
+        print(f"Here is ${round(change, 2)} in change")
+        print(f"Here is your {order}. Enjoy!")
+
+        resources["water"] -= MENU[order]["ingredients"]["water"]
+        resources["milk"] -= MENU[order]["ingredients"]["milk"]
+        resources["coffee"] -= MENU[order]["ingredients"]["coffee"]
+
+        welcome_order()
+    
 
 
 welcome_order()
