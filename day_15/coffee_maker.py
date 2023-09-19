@@ -46,6 +46,8 @@ def welcome_order():
     if user_input == "report":
         report_storage()
         welcome_order()
+    elif user_input == "off":
+        return
     elif user_input == "espresso" or user_input == "latte" or user_input == "cappuccino":
         pay_for_order(user_input)
     else:
@@ -60,6 +62,7 @@ def report_storage():
             print(f"{key}: {value}ml")
         else:
             print(f"{key}: {value}g")
+    print(f"${profit}")
 
 
 def calculate_money():
@@ -94,6 +97,7 @@ def pay_for_order(order):
 
 
 def serve_order(coffe_order, amount):
+    profit += amount
     change = amount - MENU[coffe_order]["cost"]
     print(f"Here is ${round(change, 2)} in change")
     print(f"Here is your {coffe_order}. Enjoy!")
@@ -103,6 +107,6 @@ def update_resources(coffe_order):
     resources["water"] -= MENU[coffe_order]["ingredients"]["water"]
     resources["milk"] -= MENU[coffe_order]["ingredients"]["milk"]
     resources["coffee"] -= MENU[coffe_order]["ingredients"]["coffee"]
-    
+
 
 welcome_order()
