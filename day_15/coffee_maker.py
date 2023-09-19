@@ -2,6 +2,7 @@ MENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
+            "milk": 0,
             "coffee": 18,
         },
         "cost": 1.5,
@@ -87,17 +88,21 @@ def pay_for_order(order):
             print(f"Sorry, there isn't enough {key}")
             welcome_order()
 
-    if order == "latte":
-        change = money_paid - MENU[order]["cost"]
-        print(f"Here is ${round(change, 2)} in change")
-        print(f"Here is your {order}. Enjoy!")
+    serve_order(order, money_paid)
+    update_resources(order)
+    welcome_order()
 
-        resources["water"] -= MENU[order]["ingredients"]["water"]
-        resources["milk"] -= MENU[order]["ingredients"]["milk"]
-        resources["coffee"] -= MENU[order]["ingredients"]["coffee"]
 
-        welcome_order()
+def serve_order(coffe_order, amount):
+    change = amount - MENU[coffe_order]["cost"]
+    print(f"Here is ${round(change, 2)} in change")
+    print(f"Here is your {coffe_order}. Enjoy!")
+
+
+def update_resources(coffe_order):
+    resources["water"] -= MENU[coffe_order]["ingredients"]["water"]
+    resources["milk"] -= MENU[coffe_order]["ingredients"]["milk"]
+    resources["coffee"] -= MENU[coffe_order]["ingredients"]["coffee"]
     
-
 
 welcome_order()
