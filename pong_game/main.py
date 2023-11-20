@@ -5,10 +5,10 @@ screen = Screen()
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title("Pong Game")
-screen.tracer()
+screen.tracer(0)
 
-r_paddle = Paddle()
-l_paddle = Paddle()
+r_paddle = Paddle(350, 0)
+l_paddle = Paddle(-350, 0)
 
 # Move paddle
 # screen.listen()

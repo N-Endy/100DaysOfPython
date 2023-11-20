@@ -6,20 +6,23 @@ UP = 90
 DOWN = 270
 
 
-class Paddle:
+class Paddle(Turtle):
     def __init__(self, x_cor, y_cor):
+        super().__init__()
         # self.segments = []
         self.create_paddle(x_cor, y_cor)
 
     def create_paddle(self, x_cor, y_cor):
-        pad = Turtle("square")
-        pad.color("white")
-        pad.shapesize(5, 1)
-        pad.penup()
-        pad.goto(x_cor, y_cor)
+        self.shape("square")
+        self.color("white")
+        self.shapesize(5, 1)
+        self.penup()
+        self.goto(x_cor, y_cor)
         
     def move_up(self):
-        self.setheading(UP)
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
     def move_down(self):
-        self.setheading(UP)
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
