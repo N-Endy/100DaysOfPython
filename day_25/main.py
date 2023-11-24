@@ -43,10 +43,27 @@ import pandas
 # print(temp_to_fah)
 
 # Create dataframe from scratch
-data_dict = {
-    "students": ["Amy", "James", "Angels"],
-    "scores": [76, 56, 65]
-}
+# data_dict = {
+#     "students": ["Amy", "James", "Angels"],
+#     "scores": [76, 56, 65]
+# }
 
-data = pandas.DataFrame(data_dict)
-data.to_csv("new_data.csv")
+# data = pandas.DataFrame(data_dict)
+# data.to_csv("new_data.csv")
+
+data = pandas.read_csv("./004 2018-Central-Park-Squirrel-Census-Squirrel-Data.csv")
+
+fur_color_dict = {"Fur Color": [], "Count": []}
+fur_color_list = data["Primary Fur Color"].dropna().to_list()
+
+for color in fur_color_list:
+    if color in fur_color_dict["Fur Color"]:
+        index = fur_color_dict["Fur Color"].index(color)
+        fur_color_dict["Count"][index] += 1
+    else:
+        fur_color_dict["Fur Color"].append(color)
+        fur_color_dict["Count"].append(1)
+        
+        
+fur_color = pandas.DataFrame(fur_color_dict)
+fur_color.to_csv("fur_color_data.csv")
