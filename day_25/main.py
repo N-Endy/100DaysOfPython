@@ -17,14 +17,36 @@
 
 import pandas
 
-data = pandas.read_csv("./weather-data.csv")
-# print(data["temp"])
-data_dict = data.to_dict()
-# print(data_dict)
+# data = pandas.read_csv("./weather-data.csv")
+# # print(data["temp"])
+# data_dict = data.to_dict()
+# # print(data_dict)
 
 # data_list = data["temp"].to_list()
 # temp_avg = sum(data_list) / len(data_list)
 # print(temp_avg)
-temp_avg = data["temp"].mean()
-max_temp = data["temp"].max()
-print(max_temp)
+# temp_avg = data["temp"].mean()
+# max_temp = data["temp"].max()
+# print(max_temp)
+
+# # Get data in Rows
+# row = data[data.day == "Monday"]
+# print(row)
+
+# temp_max = data[data.temp == data.temp.max()]
+# print(temp_max)
+
+# monday = data[data.day == "Monday"]
+# mon_temp = int(monday.temp)
+# print(mon_temp)
+# temp_to_fah = (mon_temp * (9/5)) + 32
+# print(temp_to_fah)
+
+# Create dataframe from scratch
+data_dict = {
+    "students": ["Amy", "James", "Angels"],
+    "scores": [76, 56, 65]
+}
+
+data = pandas.DataFrame(data_dict)
+data.to_csv("new_data.csv")
