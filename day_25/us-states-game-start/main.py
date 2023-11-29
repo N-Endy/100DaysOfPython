@@ -1,4 +1,5 @@
 import turtle
+import pandas
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
@@ -8,8 +9,29 @@ screen.addshape(image)
 turtle.shape(image)
 
 
-answer_state = screen.textinput(title="Guess the State", prompt="What's another State name?")
 
+data = pandas.read_csv("./50_states.csv")
+data_list = data.state.to_list()
+answers = []
+
+while len(answers) < 50:
+    answer_state = screen.textinput(title=f"{len(answers)}/50 States Correct", prompt="What's another State name?").title()
+    
+    row = data[data.state == answer_state]
+    x_value = row.iloc[0]['x'] # row.x
+    y_value = row.iloc[0]['y'] # row.y
+
+    if answer_state not in answers:
+        if answer_state in data_list:
+            answers.append(answer_state)
+            pen = turtle.Turtle()
+            pen.hideturtle()
+            pen.penup()
+            pen.goto(x_value, y_value)
+            pen.pendown()
+            pen.write(answer_state, font=('Arial', 7, 'normal')) # answer_state.item()
+        else:
+            continue
 
 
 
@@ -31,4 +53,4 @@ answer_state = screen.textinput(title="Guess the State", prompt="What's another 
 #     print(x, y)
 
 # turtle.onscreenclick(get_mouse_click_coor)
-# turtle.mainloop()
+turtle.mainloop()
