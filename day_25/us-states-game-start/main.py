@@ -21,17 +21,27 @@ while len(answers) < 50:
     x_value = row.iloc[0]['x'] # row.x
     y_value = row.iloc[0]['y'] # row.y
 
-    if answer_state not in answers:
-        if answer_state in data_list:
-            answers.append(answer_state)
-            pen = turtle.Turtle()
-            pen.hideturtle()
-            pen.penup()
-            pen.goto(x_value, y_value)
-            pen.pendown()
-            pen.write(answer_state, font=('Arial', 7, 'normal')) # answer_state.item()
-        else:
-            continue
+    if answer_state == "Exit":
+        break
+    if answer_state in data_list:
+        answers.append(answer_state)
+        pen = turtle.Turtle()
+        pen.hideturtle()
+        pen.penup()
+        pen.goto(x_value, y_value)
+        pen.pendown()
+        pen.write(answer_state, font=('Arial', 7, 'normal')) # answer_state.item()
+        
+missed_states = {
+    "state": []
+}
+        
+for state in data_list:
+    if state not in answers:
+        missed_states["state"].append(state)
+
+ms = pandas.DataFrame(missed_states)
+ms.to_csv("states_to_learn.csv")
 
 
 
@@ -53,4 +63,4 @@ while len(answers) < 50:
 #     print(x, y)
 
 # turtle.onscreenclick(get_mouse_click_coor)
-turtle.mainloop()
+# turtle.mainloop()
