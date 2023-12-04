@@ -18,10 +18,13 @@ def start_timer():
     reps += 1
     
     if reps % 8 == 0:
+        timer_label.config(text="Break", fg=RED)
         count_down(LONG_BREAK_MIN * 60)
     elif reps % 2 == 0:
+        timer_label.config(text="Break", fg=PINK)
         count_down(SHORT_BREAK_MIN * 60)
     else:
+        timer_label.config(text="Work", fg=GREEN)
         count_down(WORK_MIN * 60)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -48,7 +51,7 @@ canvas.create_image(100, 112, image=tomato_img)
 timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
-timer_label = tkinter.Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 40))
+timer_label = tkinter.Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 40, "bold"))
 timer_label.grid(column=1, row=0)
 
 start_button = tkinter.Button(text="Start", highlightthickness=0, command=start_timer)
