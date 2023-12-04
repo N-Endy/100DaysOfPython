@@ -20,8 +20,8 @@ label_km.grid(column=2, row=1)
 
 def miles_to_km():
     output = input.get()
-    convert = round(float(output) * 1.6)
-    label_convert.config(text=convert)
+    convert = round(float(output) * 1.609)
+    label_convert.config(text={convert})
 
 button = tkinter.Button(text="Calculate", command=miles_to_km)
 button.grid(column=1, row=2)
