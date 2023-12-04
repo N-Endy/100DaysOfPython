@@ -1,7 +1,7 @@
 import tkinter
 
 window = tkinter.Tk()
-window.title("Mile to Km Converter")
+window.title("Miles to Km Converter")
 window.minsize(width=350, height=100)
 window.config(padx=40, pady=20)
 
@@ -18,12 +18,12 @@ label_equal.grid(column=0, row=1)
 label_convert.grid(column=1, row=1)
 label_km.grid(column=2, row=1)
 
-def calculate():
+def miles_to_km():
     output = input.get()
     convert = round(float(output) * 1.6)
     label_convert.config(text=convert)
 
-button = tkinter.Button(text="Calculate", command=calculate)
+button = tkinter.Button(text="Calculate", command=miles_to_km)
 button.grid(column=1, row=2)
 
 
