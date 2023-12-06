@@ -1,7 +1,27 @@
 import tkinter
+from tkinter import messagebox
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+'''
+Saves website name, email, and password to new file before deleting entries in input fields
+'''
+def save():
+    website_entry = website_input.get()
+    email_entry = email_input.get()
+    password_entry = password_input.get()
+    
+    if len(website_entry) == 0 or len(password_entry) == 0:
+        messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
+    else:
+        is_ok = messagebox.askokcancel(title=website_entry, message=f"These are the entries entered: \nEmail: {email_entry} \nPassword: {password_entry} \nIs it okay to save?")
+        
+        with open("./data_file.txt", "a") as data_file:
+            data_file.write(f"{website_entry} | {email_entry} | {password_entry}\n")
+        
+        website_input.delete(0, 'end')
+        password_input.delete(0, 'end')
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 # Window setup
@@ -18,11 +38,13 @@ canvas.grid(column=1, row=0)
 # Labels, Inputs and Buttons
 website = tkinter.Label(text="Website:")
 website_input = tkinter.Entry(width=42)
+website_input.focus()
 website.grid(column=0, row=1)
 website_input.grid(column=1, row=1, columnspan=2)
 
-email = tkinter.Label(text="Email/Usrename:")
+email = tkinter.Label(text="Email/Username:")
 email_input = tkinter.Entry(width=42)
+email_input.insert(0, "okafornel@gmail.com")
 email.grid(column=0, row=2)
 email_input.grid(column=1, row=2, columnspan=2,)
 
@@ -33,7 +55,7 @@ password.grid(column=0, row=3)
 password_input.grid(column=1, row=3)
 generate_password.grid(column=2, row=3)
 
-add_button = tkinter.Button(text="Add", width=40)
+add_button = tkinter.Button(text="Add", width=40, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
 
 
