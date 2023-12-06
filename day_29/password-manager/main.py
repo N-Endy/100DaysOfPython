@@ -1,6 +1,8 @@
 import tkinter
 from tkinter import messagebox
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+from day_05 import password_generator
+password_generator.password
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 '''
