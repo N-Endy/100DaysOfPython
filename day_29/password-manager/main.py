@@ -44,15 +44,21 @@ def save():
     if len(website_entry) == 0 or len(password_entry) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
-        with open("./data.json", "r") as data_file:
-            # Reading old data
-            data = json.load(data_file)
+        try:
+            with open("./data.json", "r") as data_file:
+                # Reading old data
+                data = json.load(data_file)
+        except FileNotFoundError:    
+            with open("./data.json", "w") as data_file:
+                # Saving update data
+                json.dump(data, data_file, indent=4)
+        else:
+            # Updating old data with new data
             data.update(new_data)
             
-        with open("./data.json", "w") as data_file:
-            # Saving update data
-            json.dump(data, data_file, indent=4)
-            
+            with open("./data.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
+        finally:
             website_input.delete(0, 'end')
             password_input.delete(0, 'end')
 
