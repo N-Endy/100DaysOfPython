@@ -39,11 +39,12 @@ def save():
     else:
         is_ok = messagebox.askokcancel(title=website_entry, message=f"These are the entries entered: \nEmail: {email_entry} \nPassword: {password_entry} \nIs it okay to save?")
         
-        with open("./data_file.txt", "a") as data_file:
-            data_file.write(f"{website_entry} | {email_entry} | {password_entry}\n")
-        
-        website_input.delete(0, 'end')
-        password_input.delete(0, 'end')
+        if is_ok:
+            with open("./data_file.txt", "a") as data_file:
+                data_file.write(f"{website_entry} | {email_entry} | {password_entry}\n")
+            
+            website_input.delete(0, 'end')
+            password_input.delete(0, 'end')
 
 
 # ---------------------------- UI SETUP ------------------------------- #
