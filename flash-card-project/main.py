@@ -18,9 +18,9 @@ canvas.create_text(400, 263, text="word", font=("Ariel", 60, "bold"))
 canvas.grid(column=0, row=0, columnspan=2)
 
 wrong_button_img = tkinter.PhotoImage(file="./images/wrong.png")
-wrong_button = tkinter.Button(image=wrong_button_img, highlightthickness=0, padx=50)
+wrong_button = tkinter.Button(image=wrong_button_img, highlightthickness=0)
 right_button_img = tkinter.PhotoImage(file="./images/right.png")
-right_button = tkinter.Button(image=right_button_img, highlightthickness=0, padx=50)
+right_button = tkinter.Button(image=right_button_img, highlightthickness=0)
 wrong_button.grid(column=0, row=1)
 right_button.grid(column=1, row=1)
 
