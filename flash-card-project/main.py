@@ -5,6 +5,7 @@ BACKGROUND_COLOR = "#B1DDC6"
 # ----------------- WIndow Ui ------------------------
 window = tkinter.Tk()
 window.title("Flashy")
+window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 '''
 Create canvas, create photo image, load photo image and text on canvas. set to grid
