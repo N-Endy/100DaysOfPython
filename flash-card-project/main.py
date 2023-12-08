@@ -12,8 +12,8 @@ Create canvas, create photo image, load photo image and text on canvas. set to g
 canvas = tkinter.Canvas(width=800, height=526)
 card_front = tkinter.PhotoImage(file="./images/card_front.png")
 canvas.create_image(400, 263, image=card_front)
-language_text = canvas.create_text(400, 150, text="French", font=("Ariel", 40, "italic"))
-word_text = canvas.create_text(400, 263, text="trouve", font=("Ariel", 60, "bold"))
+title_text = canvas.create_text(400, 150, text="Title", font=("Ariel", 40, "italic"))
+word_text = canvas.create_text(400, 263, text="word", font=("Ariel", 60, "bold"))
 canvas.grid(column=0, row=0, columnspan=2)
 
 wrong_button_img = tkinter.PhotoImage(file="./images/wrong.png")
