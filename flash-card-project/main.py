@@ -6,9 +6,13 @@ BACKGROUND_COLOR = "#B1DDC6"
 
 # ------------------ Generate Words --------------------
 
-data = pandas.read_csv("./data/french_words.csv")
-# word_list = data.to_dict(orient="records")
-word_list = [{"French": row.French, "English": row.English} for (index, row) in data.iterrows()]
+try:
+    data = pandas.read_csv("./data/words_to_learn.csv")
+except FileNotFoundError:
+    data = pandas.read_csv("./data/french_words.csv")
+finally:
+    # word_list = data.to_dict(orient="records")
+    word_list = [{"French": row.French, "English": row.English} for (index, row) in data.iterrows()]
 
 def next_card():
     global flip_timer
@@ -26,6 +30,13 @@ def flip_card():
     canvas.itemconfig(title_text, text="English", fill="white")
     canvas.itemconfig(word_text, text=english_word["English"], fill="white")
     canvas.itemconfig(canvas_image, image=card_back)
+    
+    
+def is_known():
+    word_list.remove(next_card())
+    data = pandas.DataFrame(word_list)
+    data.to_csv("./data/words_to_learn.csv", index=False)
+    next_card()
 
 
 # ----------------- Window Ui ------------------------
@@ -51,7 +62,7 @@ canvas.grid(column=0, row=0, columnspan=2)
 wrong_button_img = tkinter.PhotoImage(file="./images/wrong.png")
 wrong_button = tkinter.Button(image=wrong_button_img, highlightthickness=0, command=next_card)
 right_button_img = tkinter.PhotoImage(file="./images/right.png")
-right_button = tkinter.Button(image=right_button_img, highlightthickness=0, command=next_card)
+right_button = tkinter.Button(image=right_button_img, highlightthickness=0, command=is_known)
 wrong_button.grid(column=0, row=1)
 right_button.grid(column=1, row=1)
 
