@@ -1,9 +1,12 @@
 from courses import Course
+from message import Message
 import sys
 
+message = Message
 
-print("Press (1) for GPA calculation")
-print("Press (0) to end process")
+
+print("\nPress (1) for GPA calculation\n")
+print("Press (0) to end process\n")
 
 
 user_input = input("Select an action to perform: ")
@@ -12,37 +15,37 @@ user_input = input("Select an action to perform: ")
     
 
 if user_input == "1":
-    number_of_courses = int(input("How many courses would you like to enter: "))
+    number_of_courses = int(input("\nHow many courses would you like to enter: "))
     
     while number_of_courses <= 0:
-        print("Invalid input. Please enter a positive integer for Number of Courses.")
-        number_of_courses = int(input("How many courses would you like to enter: "))
+        print("Invalid input. Please enter a positive integer for Number of Courses.\n")
+        number_of_courses = int(input("\nHow many courses would you like to enter: "))
         
     courses = []
 
     for i in range(0, number_of_courses):
         
         # Input course code
-        print(f"Entry number: {i + 1}")
-        course_code = input("Enter course code e.g Math-101: ")
+        print(f"\nEntry number: {i + 1}\n")
+        course_code = input("\nEnter course code e.g Math-101: ")
         
         # Input course unit
-        course_unit = int(input("Enter course unit. Range 1 - 5: "))
+        course_unit = int(input("\nEnter course unit. Range 1 - 5: "))
         while course_unit < 1 or course_unit > 5:
-            print("Invalid input. Please enter a positive integer for Course Unit.")
-            course_unit = int(input("Enter course unit. Range 1 - 5: "))
+            print("Invalid input. Please enter a positive integer for Course Unit.\n")
+            course_unit = int(input("\nEnter course unit. Range 1 - 5: "))
             
         # Input score
-        score = int(input("Enter Score. Range 0 - 100: "))
+        score = int(input("\nEnter Score. Range 0 - 100: "))
         while score < 0 or score > 100:
-            print("Invalid input. Please enter a score between 0 and 100.")
-            score = int(input("Enter Score. Range 0 - 100: "))
+            print("Invalid input. Please enter a score between 0 and 100.\n")
+            score = int(input("\nEnter Score. Range 0 - 100: "))
             
         # Initialize new course and add to list
         courses.append(Course(course_code, course_unit, score))
         
     # Display details for eac course in array
-    print("\nCourse Details:")
+    print("\n\nCourse Details:\n")
     # Header
     header = "{:<15} | {:<12} | {:<5} | {:<5} | {:<12} | {:<15}".format(
     "Course Code", "Course Unit", "Score", "Grade", "Grade Point", "Quality Point")
@@ -73,9 +76,9 @@ if user_input == "1":
         print(separator_line)
         
         
-    print(f"Your GPA is: {gpa}")
+    print(f"\nYour GPA is: {gpa}\n")
     print("GPA is calculated using the formula:")
-    print("(Total Quality Points) / (Total Course Units)")
+    print("(Total Quality Points) / (Total Course Units)\n")
     print("\n")
 elif user_input == "0":
     sys.exit(0)
