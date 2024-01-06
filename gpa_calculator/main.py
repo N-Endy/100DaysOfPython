@@ -1,8 +1,5 @@
 from courses import Course
-from message import Message
 import sys
-
-message = Message
 
 
 print("\nPress (1) for GPA calculation\n")
